@@ -5,7 +5,6 @@
 !.yarn/sdks
 !.yarn/versions
 **.env
-/db
 **.sql 
 **.zip
 **.rar
