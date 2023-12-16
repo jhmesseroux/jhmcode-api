@@ -3,7 +3,7 @@
   "packageManager": "yarn@3.4.1",
   "scripts": {
     "dev": "node  --watch --env-file=.env  server.js",
-    "start": "yarn node --env-file=.env server.js"
+    "start": "node --env-file=.env server.js"
   },
   "dependencies": {
     "bcryptjs": "2.4.3",
