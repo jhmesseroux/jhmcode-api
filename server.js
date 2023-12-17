@@ -1,4 +1,3 @@
-require('dotenv').config()
 process.on('uncaughtException', (err) => {
   console.log(err.name, ' | ', err.message)
   console.log('UNCAUGHT EXCEPTION!!! . SHUTTING DOWN THE APP...')
