@@ -1,21 +1,20 @@
+require('dotenv').config()
 process.on('uncaughtException', (err) => {
-  console.log(err.name, ' | ', err.message);
-  console.log('UNCAUGHT EXCEPTION!!! . SHUTTING DOWN THE APP...');
-  process.exit(1);
-});
+  console.log(err.name, ' | ', err.message)
+  console.log('UNCAUGHT EXCEPTION!!! . SHUTTING DOWN THE APP...')
+  process.exit(1)
+})
 
-const app = require('./app');
+const app = require('./app')
 
-const PORT = process.env.PORT || 4000;
-
-const server = app.listen(PORT, () => {
-  console.log(`AAPP RUNNING ON PORT ::: ${process.env.NODE_ENV} MODE :::  ${PORT}`);
-});
+const server = app.listen(process.env.PORT, () => {
+  console.log(`APP RUNNING ON PORT: ${process.env.PORT} IN MODE: ${process.env.NODE_ENV}`)
+})
 
 process.on('unhandledRejection', (err) => {
-  console.log(err.name, ' | ', err.message);
-  console.log('UNHANDLED REJECTION PROBLEM . SHUTTING DOWN THE APP...');
+  console.log(err.name, ' | ', err.message)
+  console.log('UNHANDLED REJECTION PROBLEM . SHUTTING DOWN THE APP...')
   server.close(() => {
-    process.exit(1);
-  });
-});
+    process.exit(1)
+  })
+})
