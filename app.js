@@ -13,8 +13,9 @@ app.use(helmet())
 app.use(express.json({ limit: '20kb' }))
 app.use(express.urlencoded({ extended: true, limit: '10kb' }))
 app.use(cookieParser())
+app.use(morgan('dev'))
 
-if (process.env.NODE_ENV !== 'production') app.use(morgan('dev'))
+// if (process.env.NODE_ENV !== 'production') app.use(morgan('dev'))
 
 if (process.env.NODE_ENV !== 'production') {
   const { dbConnect } = require('./db/index')

@@ -1,0 +1,11 @@
+const catchAsync = require('../helpers/catchAsync')
+const Education = require('../schemas/education')
+const { all, create, findByPk, update, seed, destroy, paginate } = require('./factoryController')
+
+exports.seed = seed(Education, 'Education')
+exports.all = all(Education)
+exports.paginate = paginate(Education)
+exports.create = create(Education)
+exports.findByPk = findByPk(Education)
+exports.update = update(Education)
+exports.destroy = destroy(Education)

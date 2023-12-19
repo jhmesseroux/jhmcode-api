@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize')
 const { dbConnect } = require('../db/index')
-const Skill = require('./skill')
-const Project = dbConnect.define(
-  'Project',
+
+const Education = dbConnect.define(
+  'Education',
   {
     id: {
       primaryKey: true,
@@ -10,65 +10,26 @@ const Project = dbConnect.define(
       type: DataTypes.BIGINT,
       autoIncrement: true,
     },
-
-    level: {
-      type: DataTypes.STRING(15),
+    name: {
+      type: DataTypes.STRING(50),
+      set(value) {
+        this.setDataValue('name', value.trim())
+      },
       allowNull: false,
       validate: {
         notNull: {
-          msg: 'Provide a level.',
+          msg: 'The name  is required',
         },
         notEmpty: {
-          msg: 'Provide a level.',
+          msg: 'The name  is required',
         },
-        isIn: {
-          args: [['Beginner', 'Intermediate', 'Advanced']],
-          msg: 'Provide a valid level.',
+        len: {
+          args: [3, 50],
+          msg: 'The name must have between 3 to 50 characters.',
         },
       },
     },
-    title: {
-      type: DataTypes.STRING(100),
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: 'Provide a title.',
-        },
-        notEmpty: {
-          msg: 'Provide a title.',
-        },
-      },
-    },
-    description: {
-      type: DataTypes.STRING(1000),
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: 'Provide a description.',
-        },
-        notEmpty: {
-          msg: 'Provide a description.',
-        },
-      },
-    },
-    photo: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: 'Provide a photo.',
-        },
-        notEmpty: {
-          msg: 'Provide a photo.',
-        },
-      },
-    },
-    skills: DataTypes.JSON,
-    demoLink: DataTypes.STRING,
-    collaborators: DataTypes.JSON,
-    gitBack: DataTypes.STRING,
-    gitFront: DataTypes.STRING,
-    location: DataTypes.STRING(100),
+    degree: DataTypes.STRING(50),
     startMonth: {
       type: DataTypes.STRING(10),
       allowNull: false,
@@ -121,10 +82,25 @@ const Project = dbConnect.define(
       type: DataTypes.BOOLEAN,
       defaultValue: false,
     },
+    skills: DataTypes.JSON,
+    location: DataTypes.STRING(100),
+    organization: DataTypes.JSON,
+    credentialUrl: DataTypes.STRING,
+
+    type: {
+      type: DataTypes.STRING,
+      defaultValue: 'education',
+      validate: {
+        isIn: {
+          args: [['education', 'certification', 'license']],
+          msg: 'The type must be education',
+        },
+      },
+    },
   },
   {
-    tableName: 'projects',
+    tableName: 'educations',
   }
 )
 
-module.exports = Project
+module.exports = Education

@@ -40,15 +40,15 @@ const Experience = dbConnect.define(
     },
     companyName: {
       type: DataTypes.STRING(50),
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: 'Provide a company name.',
-        },
-        notEmpty: {
-          msg: 'Provide a company name.',
-        },
-      },
+      allowNull: true,
+      // validate: {
+      //   notNull: {
+      //     msg: 'Provide a company name.',
+      //   },
+      //   notEmpty: {
+      //     msg: 'Provide a company name.',
+      //   },
+      // },
     },
 
     description: {
@@ -65,6 +65,7 @@ const Experience = dbConnect.define(
     },
 
     location: DataTypes.STRING(100),
+    demoLink: DataTypes.STRING,
     startMonth: {
       type: DataTypes.STRING(10),
       allowNull: false,
@@ -79,15 +80,15 @@ const Experience = dbConnect.define(
     },
     endMonth: {
       type: DataTypes.STRING(10),
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: 'Provide a end date.',
-        },
-        notEmpty: {
-          msg: 'Provide a end date.',
-        },
-      },
+      allowNull: true,
+      // validate: {
+      //   notNull: {
+      //     msg: 'Provide a end date.',
+      //   },
+      //   notEmpty: {
+      //     msg: 'Provide a end date.',
+      //   },
+      // },
     },
     startYear: {
       type: DataTypes.INTEGER,
@@ -103,15 +104,15 @@ const Experience = dbConnect.define(
     },
     endYear: {
       type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: {
-        notNull: {
-          msg: 'Provide a end year.',
-        },
-        notEmpty: {
-          msg: 'Provide a end year.',
-        },
-      },
+      allowNull: true,
+      // validate: {
+      //   notNull: {
+      //     msg: 'Provide a end year.',
+      //   },
+      //   notEmpty: {
+      //     msg: 'Provide a end year.',
+      //   },
+      // },
     },
     skills: DataTypes.JSON,
     current: {
